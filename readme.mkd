@@ -1,0 +1,7 @@
+Here are the scripts of the project. There are 3 directories which contain 3 different parts of the project. 
+
+* 1.Genome_assembly               
+* 2.SNP_INDEL_calling             
+* 3.Structure_variation_detection 
+
+Under each directory, there is a main script to run all the analysis. 
