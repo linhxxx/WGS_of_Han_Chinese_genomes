@@ -1,0 +1,15 @@
+# (a control file for scoring inference in LASTZ)
+
+min_identity     = 25.0%	# 25th percentile
+max_identity     = 75.0%	# 75th percentile
+
+inference_scale  = 100      # score for max substitution
+hsp_threshold    = 20*inference_scale
+gapped_threshold = hsp_threshold
+entropy          = off
+
+max_sub_iterations = 20
+max_gap_iterations = 20
+gap_open_penalty   = 4*inference_scale
+gap_extend_penalty = 0.3*inference_scale
+

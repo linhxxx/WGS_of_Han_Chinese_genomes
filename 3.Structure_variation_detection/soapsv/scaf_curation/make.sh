@@ -1,0 +1,9 @@
+. ~/.bashrc
+. ~/.bash_profile
+icc -c -O3 -openmp -use-intel-optimized-headers -axAVX,SSE4.2,SSE4.1,SSSE3,SSE3,SSE2 -fomit-frame-pointer -ipo -static -DMAKE_TIME=\""`date`"\" -I/ifs2/CD/luoruibang/bin/boost/include/ -L/ifs2/CD/luoruibang/bin/boost/stage/lib/ main.cpp -o main.o
+icc -c -O3 -openmp -use-intel-optimized-headers -axAVX,SSE4.2,SSE4.1,SSSE3,SSE3,SSE2 -fomit-frame-pointer -ipo -static -DMAKE_TIME=\""`date`"\" -I/ifs2/CD/luoruibang/bin/boost/include/ -L/ifs2/CD/luoruibang/bin/boost/stage/lib/ func.cpp -o func.o
+icc -c -O3 -openmp -use-intel-optimized-headers -axAVX,SSE4.2,SSE4.1,SSSE3,SSE3,SSE2 -fomit-frame-pointer -ipo -static -DMAKE_TIME=\""`date`"\" -I/ifs2/CD/luoruibang/bin/boost/include/ -L/ifs2/CD/luoruibang/bin/boost/stage/lib/ func2.cpp -o func2.o
+icc -c -O3 -openmp -use-intel-optimized-headers -axAVX,SSE4.2,SSE4.1,SSSE3,SSE3,SSE2 -fomit-frame-pointer -ipo -static -DMAKE_TIME=\""`date`"\" -I/ifs2/CD/luoruibang/bin/boost/include/ -L/ifs2/CD/luoruibang/bin/boost/stage/lib/ general.cpp -o general.o
+icc -c -O3 -openmp -use-intel-optimized-headers -axAVX,SSE4.2,SSE4.1,SSSE3,SSE3,SSE2 -fomit-frame-pointer -ipo -static -DMAKE_TIME=\""`date`"\" -I/ifs2/CD/luoruibang/bin/boost/include/ -L/ifs2/CD/luoruibang/bin/boost/stage/lib/ gzstream.cpp -o gzstream.o
+icc -c -O3 -openmp -use-intel-optimized-headers -axAVX,SSE4.2,SSE4.1,SSSE3,SSE3,SSE2 -fomit-frame-pointer -ipo -static -DMAKE_TIME=\""`date`"\" -I/ifs2/CD/luoruibang/bin/boost/include/ -L/ifs2/CD/luoruibang/bin/boost/stage/lib/ threadmanager.cpp -o threadmanager.o
+icc -O3 -openmp -use-intel-optimized-headers -axAVX,SSE4.2,SSE4.1,SSSE3,SSE3,SSE2 -fomit-frame-pointer -ipo -static -DMAKE_TIME=\""`date`"\" main.o func.o func2.o general.o gzstream.o threadmanager.o -I/ifs2/CD/luoruibang/bin/boost/include/ -L/ifs2/CD/luoruibang/bin/boost/stage/lib/ -o scaf_restrictor -lz -lboost_regex -tbb

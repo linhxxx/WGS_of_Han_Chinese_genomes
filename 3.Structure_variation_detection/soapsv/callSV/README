@@ -1,0 +1,13 @@
+About the format of indels:
+
+Column	Description
+1	Type of event
+2	Scaffold ID
+3	Start on scaffold
+4	End on scaffold
+5	Chromosome
+6	Start on chromosome
+7	End on chromosome
+8	Indel size
+9	Indel string (On scaffold if is an insertion. On reference if is a deletion)
+10	Individual(s)

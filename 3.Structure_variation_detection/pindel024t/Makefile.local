@@ -1,0 +1,12 @@
+# Local configuration
+# Location of SAMTools
+SAMTOOLS=/panfs/CD/linhx/bin/samtools-0.1.18
+
+# Number of threads for functional tests, set to 2 or more, recommended to match number of cores
+THREADS=
+
+# Acceptance test tuning variables (seconds), set to realistic values for your system
+# Numbers based on running in CI on Intel i7 2.8GHz, 8 cores, 24GB RAM
+COLOUSINGBD15_TIME=36
+COLOWOBD15_TIME=40
+SIM1CHRVS20305_TIME=31

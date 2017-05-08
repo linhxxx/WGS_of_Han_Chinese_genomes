@@ -1,0 +1,6 @@
+nohup perl scrPATH/spratio_combinator/coverage_filter_v5.pl -i insertion_scaf.picked -scaf insertion_scaf.origin -p 0 -sd 0 -f /dev/null -nol /dev/null -nop /dev/null -N /dev/null -r insertion_scaf.out -cutoff 0 -min 25 -ext 50 &
+nohup perl scrPATH/spratio_combinator/coverage_filter_v5.pl -i insertion_hg18.picked -scaf insertion_hg18.origin -p 0 -sd 0 -f /dev/null -nol /dev/null -nop /dev/null -N /dev/null -r insertion_hg18.out -cutoff 0 -min 25 -ext 50 &
+nohup perl scrPATH/spratio_combinator/coverage_filter_v5.pl -i deletion_scaf.picked -scaf deletion_scaf.origin -p 0 -sd 0 -f /dev/null -nol /dev/null -nop /dev/null -N /dev/null -r deletion_scaf.out -cutoff 0 -min 25 -ext 50 &
+nohup perl scrPATH/spratio_combinator/coverage_filter_v5.pl -i deletion_hg18.picked -scaf deletion_hg18.origin -p 0 -sd 0 -f /dev/null -nol /dev/null -nop /dev/null -N /dev/null -r deletion_hg18.out -cutoff 0 -min 25 -ext 50 &
+nohup perl scrPATH/spratio_combinator/coverage_filter_v5.pl -i inversion_scaf.picked -scaf inversion_scaf.origin -p 0 -sd 0 -f /dev/null -nol /dev/null -nop /dev/null -N /dev/null -r inversion_scaf.out -cutoff 0 -min 25 -ext 50 &
+nohup perl scrPATH/spratio_combinator/coverage_filter_v5.pl -i inversion_hg18.picked -scaf inversion_hg18.origin -p 0 -sd 0 -f /dev/null -nol /dev/null -nop /dev/null -N /dev/null -r inversion_hg18.out -cutoff 0 -min 25 -ext 50 &

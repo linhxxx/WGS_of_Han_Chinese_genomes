@@ -1,0 +1,49 @@
+
+This directory contains some short test scripts for SVToolkit that can be used to verify that your installation is working correctly.
+The scripts also serve as examples of processing pipelines, although you may want to adapt these piplines to your specific needs.
+
+There are two test shell scripts:
+
+discovery.sh
+Runs preprocessing and deletion discovery on a 200Kb region of chr1 using data from the 1000 Genomes pilot phase.
+This script also runs genotyping on the discovered deletions.
+Since Genome STRiP currently does not emit events with base-pair resolution,
+this script skips alternate allele alignments (there are no precise alternate alleles to align to).
+Run directory: test1
+Output: test1.discovery.vcf, test1.genotypes.vcf
+
+genotyping.sh
+Runs preprocessing, alternate allele alignment and genotyping on several deletions called by the 1000 Genomes project
+on this same 200Kb region of chr1.  The VCF file from the 1000 Genomes project provides precise alternate alleles
+for some of the events.  The event boundaries determined by the 1000 Genomes project are somewhat different than the
+event boundaries as determined by Genome STRiP.
+Run diretory: test2
+Output: test2.genotypes.vcf
+
+
+Tips for running the scripts
+
+Ensure that java, R (Rscript), samtools, and bwa are all on your path.
+There is a suitable version of bwa in the ./bwa directory if you don't have it separately installed.
+
+Run the scripts from this directory.
+If you want to run the scripts in a different directory, modify the SV_DIR and/or SV_TMPDIR variables in the scripts if necessary.
+
+The scripts should run in under five minutes each and produce vcf files as indicated above.
+Baseline results for comparison are in the benchmark directory.
+
+
+Notes
+
+Both scripts utilize a special configuration file adapted for calling alignments with only 200Kb of aligned data.
+The genome sizes in this parameter file are not suitable for use with whole-genome sequencing data.
+
+The scripts use a truncated reference file (and mask file) to save space.
+These files come gzipped, but are automatically unzipped by the scripts.
+
+These tests are only to check that the installation is functioning correctly.
+The genotyping results (and to a lesser extent the discovery results) are not as accurate as calls from the 1000 Genomes
+project because we are working with only a subset of the available data.
+
+Both scripts are written to be self-contained, so they both run the preprocessing step.
+In practice, you would likely just run the preprocessing step once on your data set.
