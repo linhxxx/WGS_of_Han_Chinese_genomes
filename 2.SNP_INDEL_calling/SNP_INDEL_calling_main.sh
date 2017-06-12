@@ -14,12 +14,12 @@ samtools sort -m 3000000000 $BAM $BAM_SORT_PREFIX
 # BAM remove duplication
 samtools rmdup $SORTED_BAM $SORTED_RMDUP_BAM
 
+# BAM markduplicate
+java -jar picard-tools-1.61/MarkDuplicates.jar I=$BAM O=$DEDUP_BAM M=$METRICS CREATE_INDEX=true VALIDATION_STRINGENCY=SILENT
+
 # Read realign 
 java -jar GenomeAnalysisTK.jar -T RealignerTargetCreator -nt 4 -R $HG19 -I $BAM -o $INTERVALS --known Mills_and_1000G_gold_standard.indels.hg19.sites.vcf --known 1000G_phase1.indels.hg19.vcf 
 java -jar GenomeAnalysisTK.jar -T IndelRealigner -model USE_SW -LOD 0.4 -known Mills_and_1000G_gold_standard.indels.hg19.sites.vcf -known 1000G_phase1.indels.hg19.vcf -R $HG19 --targetIntervals $INTERVALS -I $BAM -o $REALN_BAM
-
-# BAM markduplicate
-java -jar picard-tools-1.61/MarkDuplicates.jar I=$REALN_BAM O=$DEDUP_BAM M=$METRICS CREATE_INDEX=true VALIDATION_STRINGENCY=SILENT
 
 # Base Quality Score Recalibration(BQSR)
 java -jar GenomeAnalysisTK.jar -T BaseRecalibrator --knownSites Mills_and_1000G_gold_standard.indels.hg19.sites.vcf --knownSites 1000G_phase1.indels.hg19.vcf --knownSites dbsnp_135.hg19.vcf -R $HG19 -I $BAM -o $RECAL_FILE  -L chr1 -L chr2 -L chr3 -L chr4 -L chr5 -L chr6 -L chr7 -L chr8 -L chr9 -L chr10 -L chr11 -L chr12 -L chr13 -L chr14 -L chr15 -L chr16 -L chr17 -L chr18 -L chr19 -L chr20 -L chr21 -L chr22 -L chrX -L chrY -L chrM -rf BadCigar 
