@@ -22,8 +22,8 @@ java -jar GenomeAnalysisTK.jar -T IndelRealigner -model USE_SW -LOD 0.4 -known M
 java -jar picard-tools-1.61/MarkDuplicates.jar I=$REALN_BAM O=$DEDUP_BAM M=$METRICS CREATE_INDEX=true VALIDATION_STRINGENCY=SILENT
 
 # Base Quality Score Recalibration(BQSR)
-java -jar GenomeAnalysisTK.jar -nt 4  -T CountCovariates --knownSites Mills_and_1000G_gold_standard.indels.hg19.sites.vcf --knownSites 1000G_phase1.indels.hg19.vcf --knownSites dbsnp_135.hg19.vcf -R $HG19 -I $BAM -recalFile $RECAL_FILE  -L chr1 -L chr2 -L chr3 -L chr4 -L chr5 -L chr6 -L chr7 -L chr8 -L chr9 -L chr10 -L chr11 -L chr12 -L chr13 -L chr14 -L chr15 -L chr16 -L chr17 -L chr18 -L chr19 -L chr20 -L chr21 -L chr22 -L chrX -L chrY -L chrM -rf BadCigar 
-java -jar GenomeAnalysisTK.jar -T TableRecalibration -recalFile $RECAL_FILE  -R $HG19  -I $BAM -o $RECAL_BAM
+java -jar GenomeAnalysisTK.jar -T BaseRecalibrator --knownSites Mills_and_1000G_gold_standard.indels.hg19.sites.vcf --knownSites 1000G_phase1.indels.hg19.vcf --knownSites dbsnp_135.hg19.vcf -R $HG19 -I $BAM -o $RECAL_FILE  -L chr1 -L chr2 -L chr3 -L chr4 -L chr5 -L chr6 -L chr7 -L chr8 -L chr9 -L chr10 -L chr11 -L chr12 -L chr13 -L chr14 -L chr15 -L chr16 -L chr17 -L chr18 -L chr19 -L chr20 -L chr21 -L chr22 -L chrX -L chrY -L chrM -rf BadCigar 
+java -jar GenomeAnalysisTK.jar -T PrintReads -nct 6 -BQSR $RECAL_FILE  -R $HG19  -I $BAM -o $RECAL_BAM
 
 # BAM merge
 samtools merge -R $CHR -rh $READ_GROUP_INFO $MERGE_BAM $INPUT_BAM_LIST
